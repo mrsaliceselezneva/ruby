@@ -1,10 +1,10 @@
 require 'benchmark'
 
 class Element
-    attr_accessor :value, :next
-    def initialize(value=0, next=0)
+    attr_accessor :value, :next_element
+    def initialize(value=0, next_element=0)
         value = value
-        next = next
+        next_element = next_element
     end
 end
 
@@ -18,44 +18,44 @@ class List
     def count
         count = 0
         now = @start
-        while now.next != 0
-            now = now.next
+        while now.next_element != 0
+            now = now.next_element
             count += 1
         end
         return count
     end
     
     def prepend(value)
-        new_element = Element.new(value, @start.next)
-        @start.next = new_element
+        new_element = Element.new(value, @start.next_element)
+        @start.next_element = new_element
     end
     
     def append(value)
         new_element = Element.new(value)
         now = @start
-        while now.next != 0
-            now = now.next
+        while now.next_element != 0
+            now = now.next_element
         end
-        now.next = new_element
+        now.next_element = new_element
     end
     
     def insert(value, index)
         count = 0
         now = @start
-        while now.next != 0 and count != index
-            now = now.next
+        while now.next_element != 0 and count != index
+            now = now.next_element
             count += 1
         end
         if count == index
-            now.next = Element.new(value, now.next)
+            now.next_element = Element.new(value, now.next_element)
         end
     end
     
     def get(index)
         count = -1
         now = @start
-        while now.next != 0 and count != index
-            now = now.next
+        while now.next_element != 0 and count != index
+            now = now.next_element
             count += 1
         end
         if count == index
@@ -67,13 +67,13 @@ class List
     def remove(index)
         count = -1
         second = @start
-        while second.next != 0 and count != index
+        while second.next_element != 0 and count != index
             first = second
-            second = second.next
+            second = second.next_element
             count += 1
         end
         if count == index
-            first.next = second.next
+            first.next_element = second.next_element
         end
         return "not found"
     end
