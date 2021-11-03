@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang = "ru">
+    <head>
+        <meta charset = "utf-8">
+		<script src="js/callback.js"></script>
+        <title>task2</title>
+    </head>
+    <body>
+		<input id="button" type="button" value="Магия">
+		 <script>
+		 async function write_one(){
+			 return "one";
+		 }
+		 async function write_two(){
+			 await write_one().then(console.log);
+			 return "two";
+		 }
+		 
+		 async function write_three(){
+			 await write_two().then(console.log);
+			 return "three";
+		 }
+			 document.getElementById("button").addEventListener( "click" , () => write_three().then(console.log));
+		 </script>
+    </body>
