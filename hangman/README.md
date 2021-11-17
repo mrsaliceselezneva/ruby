@@ -1,1 +1,0 @@
-https://mrsaliceselezneva.github.io/hangman/index.html
