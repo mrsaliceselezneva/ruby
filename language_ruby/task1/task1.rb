@@ -73,10 +73,10 @@ config = Configus.config :staging, :production do
 end
    
 puts config
-puts config.key1
-puts config.key2
-puts config.group1.key3
-puts config.group1.key4
+puts config.key1[0]
+puts config.key2[0]
+puts config.group1.key3[0]
+puts config.group1.key4[0]
 
 config.key1 === "value1"
 config.key2 === "newvalue2"
