@@ -1,0 +1,8 @@
+require "socket"
+
+begin
+  socket = UNIXSocket.for_fd(ARGV.shift.to_i)
+  socket.send("Hello world!\n", 0)
+ensure
+  socket&.close
+end
